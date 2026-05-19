@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Braille Decryption Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="game-container">
+
+    <!-- Target Symbol -->
+    <div class="target-box" id="targetSymbol">?</div>
+
+    <!-- Streak Display -->
+    <div class="streak-display" id="streakDisplay">Streak: 0</div>
+
+    <!-- Braille Grid -->
+    <div class="grid" id="grid"></div>
+
+    <!-- Timer Bar -->
+    <div class="timer-bar">
+      <div class="timer-fill" id="timerFill"></div>
+    </div>
+
+    <!-- Encrypted Message Overlay -->
+    <div id="encryptedBox" class="encrypted-box" style="display: none;">
+      <img src="lock-icon.svg" alt="Encrypted" class="encrypted-icon" />
+      <div class="encrypted-text">Files encrypted, user bypass required..</div>
+    </div>
+
+    <!-- Game Over -->
+    <div id="gameOverScreen" style="display: none;">
+      <h2>GAME OVER</h2>
+      <button id="playAgainBtn">Play Again</button>
+    </div>
+
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
