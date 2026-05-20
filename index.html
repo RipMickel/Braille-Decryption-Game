@@ -4,7 +4,149 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Braille Decryption Game</title>
-  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    body {
+  margin: 0;
+  background: url('https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHM3eTAydnI3dDN1eTZlbGxyYnV3eGJzb2M2aW8zamIzM2hlYWZ2MSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QpVUMRUJGokfqXyfa1/giphy.gif') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Optional: dark overlay on background */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.game-container {
+  text-align: center;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Target Symbol Box */
+.target-box {
+  background: #000;
+  border: 2px solid #fff;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.streak-display {
+  margin: 10px;
+  font-size: 1.2rem;
+  color: #00ff88;
+}
+
+/* Braille Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(10, 60px); /* increased cell width */
+  gap: 6px;
+  background: #111;
+  padding: 12px;
+  border: 2px solid #222;
+}
+
+/* Each Cell */
+.cell {
+  width: 60px;
+  height: 60px;
+  background: #000;
+  border: 1px solid #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem; /* larger Braille symbols */
+  color: #fff;
+  font-family: monospace;
+  cursor: pointer;
+}
+
+.cell:hover {
+  background: #e50914;
+}
+
+/* Timer Bar */
+.timer-bar {
+  width: 100%;
+  height: 6px;
+  background: #222;
+  margin-top: 10px;
+  position: relative;
+}
+
+.timer-fill {
+  height: 100%;
+  background: #e50914;
+  transition: width 0.1s linear;
+}
+
+.encrypted-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #0e0e0e;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.encrypted-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+  filter: invert(1); /* makes black icon white if needed */
+}
+
+.encrypted-text {
+  font-size: 1rem;
+  color: #fff;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+/* Game Over */
+#gameOverScreen {
+  margin-top: 20px;
+  color: #fff;
+}
+
+#gameOverScreen button {
+  padding: 10px 20px;
+  background: #e50914;
+  color: #fff;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+  </style>
 </head>
 <body>
   <div class="game-container">
